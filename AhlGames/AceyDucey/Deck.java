@@ -8,6 +8,8 @@ public class Deck
 
   public int numCards;
 
+  public RankSet rankSystem;
+
   public Deck ()
   {
     this(48, true, 4);
@@ -24,14 +26,23 @@ public class Deck
 
     this.numSuits = nS;
 
+    this.isAceHigh = aceType;
+
+    if (this.isAceHigh)
+    {
+      this.rankSystem = new AceHiDeck();
+    }
+    else
+    {
+      this.rankSystem = new AceLoDeck();
+    }
+
     this.cards = new Card [numCards];
 
     for (int i = 0; i < numCards; i++)
     {
       this.cards[i] = new Card(i, this);
     }
-
-    this.isAceHigh = aceType;
   }
 
   public boolean isAceHigh ()

@@ -5,36 +5,27 @@
   Integer divide this card number to find its suit,
     and mod by 13 to find its rank.
 */
-public class Card extends Integer implements Comparable
+public class Card extends Integer
 {
-  public enum Suit { CLUBS, DIAMONDS, HEARTS, SPADES }
-
-  public abstract enum Rank;
-
-  public enum AceHiDeck extends Rank
+  public enum Suit
   {
-    TWO, THREE, FOUR, FIVE, SIX, SEVEN,
-    EIGHT, NINE, JACK, QUEEN, KING, ACE
-  }
-
-  public enum AceLoDeck extends Rank
-  {
-    ACE, TWO, THREE, FOUR, FIVE, SIX,
-    SEVEN, EIGHT, NINE, JACK, QUEEN, KING
+    CLUBS,
+    DIAMONDS,
+    HEARTS,
+    SPADES
   }
 
   public Deck deck;
 
   public Suit suit;
-  public Rank rank;
 
   public Card (int i, Deck some_deck)
   {
+    super(i);
+
     i %= deck.numCards;
 
     int numRanks = deck.numCards / deck.numSuits;
-
-    super(i);
 
     this.deck = some_deck;
 
